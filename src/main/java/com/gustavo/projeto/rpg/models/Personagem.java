@@ -63,6 +63,10 @@ public class Personagem {
     @Column(nullable = false)
     private Integer deslocamento;
 
+    @Column
+    @ElementCollection
+    private Map<Integer, Integer> espacosMagia = new HashMap<>();
+
     @NotNull
     @Column(nullable = false)
     private Date dtCriadoEm;
@@ -84,6 +88,7 @@ public class Personagem {
             Integer vidaTemporaria,
             Integer classeArmadura,
             Integer deslocamento,
+            Map<Integer, Integer> espacosMagia,
             Date dtCriadoEm
     ) {
         this.nome = nome;
@@ -96,6 +101,7 @@ public class Personagem {
         this.vidaTemporaria = vidaTemporaria;
         this.classeArmadura = classeArmadura;
         this.deslocamento = deslocamento;
+        this.espacosMagia = espacosMagia;
         this.dtCriadoEm = dtCriadoEm;
     }
 
@@ -187,6 +193,14 @@ public class Personagem {
 
     public void setDeslocamento(Integer deslocamento) {
         this.deslocamento = deslocamento;
+    }
+
+    public Map<Integer, Integer> getEspacosMagia() {
+        return espacosMagia;
+    }
+
+    public void setEspacosMagia(Map<Integer, Integer> espacosMagia) {
+        this.espacosMagia = espacosMagia;
     }
 
     public Date getDtCriadoEm() {

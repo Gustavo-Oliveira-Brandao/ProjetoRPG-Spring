@@ -35,7 +35,6 @@ public class TalentoService {
 
     public Talento update(@NotNull @Positive Long id, @Valid @NotNull Talento talento){
         return talentoRepository.findById(id).map(recordFound -> {
-            System.out.println("E aqui");
             recordFound.setNome(talento.getNome());
             recordFound.setPreRequisitos(talento.getPreRequisitos());
             recordFound.setTracos(talento.getTracos());
@@ -45,7 +44,6 @@ public class TalentoService {
             recordFound.setDescricao(talento.getDescricao());
             recordFound.setEspecial(talento.getEspecial());
             recordFound.setDtAlteradoEm(new Date());
-            System.out.println("Cheguei aqui");
             return talentoRepository.save(recordFound);
         }).orElseThrow(() -> new RecordNotFoundException(id));
     }

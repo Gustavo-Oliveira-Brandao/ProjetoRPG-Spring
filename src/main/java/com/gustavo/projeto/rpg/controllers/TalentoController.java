@@ -40,7 +40,6 @@ public class TalentoController {
 
     @PutMapping("/{id}")
     public Talento update(@PathVariable @NotNull @Positive Long id, @RequestBody @NotNull @Valid Talento talento){
-        System.out.println("mas aqui");
         return talentoService.update(id, talento);
     }
 

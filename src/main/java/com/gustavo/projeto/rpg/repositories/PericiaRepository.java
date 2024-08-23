@@ -1,9 +1,9 @@
 package com.gustavo.projeto.rpg.repositories;
 
-import com.gustavo.projeto.rpg.models.Talento;
+import com.gustavo.projeto.rpg.models.Pericia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TalentoRepository extends JpaRepository<Talento, Long> {
+public interface PericiaRepository extends JpaRepository<Pericia, Long> {
 }

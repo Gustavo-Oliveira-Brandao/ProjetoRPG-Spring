@@ -2,6 +2,7 @@ package com.gustavo.projeto.rpg.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
@@ -52,9 +53,6 @@ public class Talento {
 
     @Column
     private Date dtAlteradoEm;
-
-    @Column
-    private Date dtDeletadoEm;
 
     public Talento(){}
 
@@ -169,11 +167,4 @@ public class Talento {
         this.dtAlteradoEm = dtAlteradoEm;
     }
 
-    public Date getDtDeletadoEm() {
-        return dtDeletadoEm;
-    }
-
-    public void setDtDeletadoEm(Date dtDeletadoEm) {
-        this.dtDeletadoEm = dtDeletadoEm;
-    }
 }
