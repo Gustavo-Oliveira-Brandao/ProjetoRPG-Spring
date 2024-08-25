@@ -5,6 +5,7 @@ import com.gustavo.projeto.rpg.services.AtributoService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class AtributoController {
     }
 
     @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     public Atributo create(@RequestBody @NotNull @Valid Atributo atributo){
         return atributoService.create(atributo);
     }
@@ -42,6 +44,7 @@ public class AtributoController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void delete(@PathVariable @NotNull @Positive Long id){
         atributoService.delete(id);
     }

@@ -2,13 +2,16 @@ package com.gustavo.projeto.rpg.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.*;
 
 @Entity
+@SQLDelete(sql = "UPDATE talento SET status = 'Inativo' WHERE id = ?")
 public class Talento {
 
     @Id
@@ -47,12 +50,20 @@ public class Talento {
     @Column(length = 2500)
     private String especial;
 
+    @Column(nullable = false, length = 10)
+    @Length(max = 10)
+    @Pattern(regexp = "Ativo|Inativo")
+    private String status = "Ativo";
+
     @NotNull
     @Column(nullable = false)
     private Date dtCriadoEm;
 
     @Column
     private Date dtAlteradoEm;
+
+    @Column
+    private Date dtDeletadoEm;
 
     public Talento(){}
 
@@ -167,4 +178,19 @@ public class Talento {
         this.dtAlteradoEm = dtAlteradoEm;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getDtDeletadoEm() {
+        return dtDeletadoEm;
+    }
+
+    public void setDtDeletadoEm(Date dtDeletadoEm) {
+        this.dtDeletadoEm = dtDeletadoEm;
+    }
 }

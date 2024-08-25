@@ -3,6 +3,9 @@ package com.gustavo.projeto.rpg.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.Date;
@@ -10,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Entity
+@SQLDelete(sql = "UPDATE personagem SET status = 'Inativo' WHERE id = ?")
 public class Personagem {
 
     @Id
@@ -66,6 +70,11 @@ public class Personagem {
     @Column
     @ElementCollection
     private Map<Integer, Integer> espacosMagia = new HashMap<>();
+
+    @Column(nullable = false, length = 10)
+    @Length(max = 10)
+    @Pattern(regexp = "Ativo|Inativo")
+    private String status = "Ativo";
 
     @NotNull
     @Column(nullable = false)
@@ -201,6 +210,14 @@ public class Personagem {
 
     public void setEspacosMagia(Map<Integer, Integer> espacosMagia) {
         this.espacosMagia = espacosMagia;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getDtCriadoEm() {
