@@ -1,9 +1,9 @@
 package com.gustavo.projeto.rpg.repositories;
 
-import com.gustavo.projeto.rpg.models.Pericia;
+import com.gustavo.projeto.rpg.models.Attribute;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PericiaRepository extends JpaRepository<Pericia, Long> {
+public interface AttributeRepository extends JpaRepository<Attribute, Long> {
 }
