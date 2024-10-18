@@ -24,7 +24,8 @@ public class CharacterService {
     }
 
     public RpgCharacter findById(@NotNull @Positive Long id){
-        return characterRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
+        return characterRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     public RpgCharacter create(@Valid @NotNull RpgCharacter rpgCharacter){
@@ -44,6 +45,7 @@ public class CharacterService {
     }
 
     public void delete(@NotNull @Positive Long id){
-        characterRepository.delete(characterRepository.findById(id).orElseThrow(() -> new RecordNotFoundException(id)));
+        characterRepository.delete(characterRepository.findById(id)
+                .orElseThrow(() -> new RecordNotFoundException(id)));
     }
 }

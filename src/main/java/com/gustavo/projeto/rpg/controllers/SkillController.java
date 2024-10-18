@@ -1,5 +1,6 @@
 package com.gustavo.projeto.rpg.controllers;
 
+import com.gustavo.projeto.rpg.dto.SkillDto;
 import com.gustavo.projeto.rpg.models.Skill;
 import com.gustavo.projeto.rpg.services.SkillService;
 import jakarta.validation.Valid;
@@ -34,12 +35,12 @@ public class SkillController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Skill create(@RequestBody @NotNull @Valid Skill skill){
+    public Skill create(@RequestBody @NotNull @Valid SkillDto skill){
         return skillService.create(skill);
     }
 
     @PutMapping("/{id}")
-    public Skill update(@PathVariable @NotNull @Positive Long id, @RequestBody @NotNull @Valid Skill skill){
+    public Skill update(@PathVariable @NotNull @Positive Long id, @RequestBody @NotNull @Valid SkillDto skill){
         return skillService.update(id, skill);
     }
 

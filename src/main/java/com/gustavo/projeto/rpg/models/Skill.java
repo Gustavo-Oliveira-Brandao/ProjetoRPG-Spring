@@ -1,15 +1,18 @@
 package com.gustavo.projeto.rpg.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
+
+import java.util.Objects;
 
 @Entity
 public class Skill {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @Column
+    @Column(name = "skill_id")
     private Long id;
 
     @NotNull
@@ -34,7 +37,8 @@ public class Skill {
     @Column(nullable = false)
     private Integer trainingValue;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "attribute_id")
     private Attribute attribute;
 
@@ -46,9 +50,10 @@ public class Skill {
     @Column(nullable = false)
     private Boolean armorPenalty;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpgCharacter_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rpg_character_id")
     private RpgCharacter rpgCharacter;
+
     public Skill() {
     }
 
@@ -110,6 +115,7 @@ public class Skill {
         this.trainingValue = trainingValue;
     }
 
+    @JsonIgnore
     public Attribute getAttribute() {
         return attribute;
     }
@@ -134,11 +140,24 @@ public class Skill {
         this.armorPenalty = armorPenalty;
     }
 
+    @JsonIgnore
     public RpgCharacter getCharacter() {
         return rpgCharacter;
     }
 
     public void setCharacter(RpgCharacter rpgCharacter) {
         this.rpgCharacter = rpgCharacter;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Skill skill)) return false;
+        return Objects.equals(id, skill.id) && Objects.equals(name, skill.name) && Objects.equals(totalValue, skill.totalValue) && Objects.equals(bonus, skill.bonus) && Objects.equals(training, skill.training) && Objects.equals(trainingValue, skill.trainingValue) && Objects.equals(attribute, skill.attribute) && Objects.equals(trainingRestriction, skill.trainingRestriction) && Objects.equals(armorPenalty, skill.armorPenalty) && Objects.equals(rpgCharacter, skill.rpgCharacter);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, totalValue, bonus, training, trainingValue, attribute, trainingRestriction, armorPenalty, rpgCharacter);
     }
 }

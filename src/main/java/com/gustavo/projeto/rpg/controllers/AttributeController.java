@@ -1,5 +1,6 @@
 package com.gustavo.projeto.rpg.controllers;
 
+import com.gustavo.projeto.rpg.dto.AttributeDto;
 import com.gustavo.projeto.rpg.models.Attribute;
 import com.gustavo.projeto.rpg.services.AttributeService;
 import jakarta.validation.Valid;
@@ -32,12 +33,12 @@ public class AttributeController {
     }
 
     @PostMapping
-    public Attribute create(@RequestBody @Valid @NotNull Attribute attribute){
+    public Attribute create(@RequestBody @Valid @NotNull AttributeDto attribute){
         return attributeService.create(attribute);
     }
 
     @PutMapping("/{id}")
-    public Attribute update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid @NotNull Attribute attribute){
+    public Attribute update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid @NotNull AttributeDto attribute){
         return attributeService.update(id, attribute);
     }
 

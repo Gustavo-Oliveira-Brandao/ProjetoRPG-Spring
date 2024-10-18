@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.Objects;
+
 @Entity
 public class Attack {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "attack_id")
     private Long id;
 
     @NotNull
@@ -91,8 +93,8 @@ public class Attack {
     @Column(nullable = false, length = 50)
     private String damageAttribute2;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpgCharacter_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rpg_character_id")
     private RpgCharacter rpgCharacter;
 
     public Attack(){}
@@ -276,5 +278,17 @@ public class Attack {
 
     public void setCharacter(RpgCharacter rpgCharacter) {
         this.rpgCharacter = rpgCharacter;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Attack attack)) return false;
+        return Objects.equals(id, attack.id) && Objects.equals(name, attack.name) && Objects.equals(attackRange, attack.attackRange) && Objects.equals(toHitSkill, attack.toHitSkill) && Objects.equals(toHit, attack.toHit) && Objects.equals(toHitBonus, attack.toHitBonus) && Objects.equals(critMultiplier, attack.critMultiplier) && Objects.equals(critMargin, attack.critMargin) && Objects.equals(description, attack.description) && Objects.equals(damageQuantity1, attack.damageQuantity1) && Objects.equals(damageDiceSize1, attack.damageDiceSize1) && Objects.equals(damageType1, attack.damageType1) && Objects.equals(bonusDamage1, attack.bonusDamage1) && Objects.equals(damageAttribute1, attack.damageAttribute1) && Objects.equals(damageQuantity2, attack.damageQuantity2) && Objects.equals(damageDiceSize2, attack.damageDiceSize2) && Objects.equals(damageType2, attack.damageType2) && Objects.equals(bonusDamage2, attack.bonusDamage2) && Objects.equals(damageAttribute2, attack.damageAttribute2) && Objects.equals(rpgCharacter, attack.rpgCharacter);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, attackRange, toHitSkill, toHit, toHitBonus, critMultiplier, critMargin, description, damageQuantity1, damageDiceSize1, damageType1, bonusDamage1, damageAttribute1, damageQuantity2, damageDiceSize2, damageType2, bonusDamage2, damageAttribute2, rpgCharacter);
     }
 }

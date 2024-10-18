@@ -1,17 +1,19 @@
 package com.gustavo.projeto.rpg.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
-import java.util.Set;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Attribute {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
+    @Column(name = "attribute_id")
     private Long id;
 
     @NotNull
@@ -27,20 +29,23 @@ public class Attribute {
     @Column(nullable = false)
     private Integer bonus;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpgCharacter_id")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "rpg_character_id")
     private RpgCharacter rpgCharacter;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "attribute", cascade = CascadeType.ALL)
-    private Set<Skill> skill;
+    private List<Skill> skills;
 
     public Attribute() {
     }
 
-    public Attribute(String name, Integer totalValue, Integer bonus) {
+    public Attribute(Long id, String name, Integer totalValue, Integer bonus, RpgCharacter rpgCharacter, List<Skill> skills) {
+        this.id = id;
         this.name = name;
         this.totalValue = totalValue;
         this.bonus = bonus;
+        this.rpgCharacter = rpgCharacter;
+        this.skills = skills;
     }
 
     public Long getId() {
@@ -75,19 +80,32 @@ public class Attribute {
         this.bonus = bonus;
     }
 
-    public RpgCharacter getCharacter() {
+    @JsonIgnore
+    public RpgCharacter getRpgCharacter() {
         return rpgCharacter;
     }
 
-    public void setCharacter(RpgCharacter rpgCharacter) {
+    public void setRpgCharacter(RpgCharacter rpgCharacter) {
         this.rpgCharacter = rpgCharacter;
     }
 
-    public Set<Skill> getSkill() {
-        return skill;
+    public List<Skill> getSkills() {
+        return skills;
     }
 
-    public void setSkill(Set<Skill> skill) {
-        this.skill = skill;
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Attribute attribute)) return false;
+        return Objects.equals(id, attribute.id) && Objects.equals(name, attribute.name) && Objects.equals(totalValue, attribute.totalValue) && Objects.equals(bonus, attribute.bonus) && Objects.equals(rpgCharacter, attribute.rpgCharacter) && Objects.equals(skills, attribute.skills);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, totalValue, bonus, rpgCharacter, skills);
     }
 }
