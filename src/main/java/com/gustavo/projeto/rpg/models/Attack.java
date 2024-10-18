@@ -3,12 +3,14 @@ package com.gustavo.projeto.rpg.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.Objects;
 
-@Entity
 @Data
+@Entity
 public class Attack {
 
     @Id

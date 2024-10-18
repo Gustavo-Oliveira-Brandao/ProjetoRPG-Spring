@@ -40,7 +40,7 @@ public class AttackService {
             recordFound.setToHitBonus(attack.getToHitBonus());
             recordFound.setCritMultiplier(attack.getCritMultiplier());
             recordFound.setCritMargin(attack.getCritMargin());
-            recordFound.setAttackDescription(attack.getAttackDescription());
+            recordFound.setDescription(attack.getDescription());
             recordFound.setDamageQuantity1(attack.getDamageQuantity1());
             recordFound.setDamageDiceSize1(attack.getDamageDiceSize1());
             recordFound.setDamageType1(attack.getDamageType1());

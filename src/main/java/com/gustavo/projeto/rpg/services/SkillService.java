@@ -58,7 +58,7 @@ public class SkillService {
 
         Skill newSkill = mapper.toModel(skill);
 
-        newSkill.setCharacter(character);
+        newSkill.setRpgCharacter(character);
         newSkill.setAttribute(attribute);
 
         return skillRepository.save(newSkill);
