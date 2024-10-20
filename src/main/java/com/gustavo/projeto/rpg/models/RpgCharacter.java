@@ -82,7 +82,7 @@ public class RpgCharacter {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Attribute> attributes;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Attack> attacks;
 
     public RpgCharacter(){}

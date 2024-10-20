@@ -28,16 +28,9 @@ public class Attribute {
     @Column(nullable = false)
     private Integer totalValue;
 
-    @NotNull
-    @Column(nullable = false)
-    private Integer bonus;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "rpg_character_id")
     private RpgCharacter rpgCharacter;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "attribute", cascade = CascadeType.ALL)
-    private List<Skill> skills;
 
     public Attribute() {
     }

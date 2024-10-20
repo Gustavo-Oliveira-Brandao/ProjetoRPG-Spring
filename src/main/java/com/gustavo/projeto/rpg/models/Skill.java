@@ -39,11 +39,6 @@ public class Skill {
     @Column(nullable = false)
     private Integer trainingValue;
 
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "attribute_id")
-    private Attribute attribute;
-
     @NotNull
     @Column(nullable = false)
     private Boolean trainingRestriction;
@@ -52,7 +47,7 @@ public class Skill {
     @Column(nullable = false)
     private Boolean armorPenalty;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "rpg_character_id")
     private RpgCharacter rpgCharacter;
 

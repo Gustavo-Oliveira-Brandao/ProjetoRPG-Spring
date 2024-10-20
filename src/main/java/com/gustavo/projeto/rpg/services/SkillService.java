@@ -1,8 +1,6 @@
 package com.gustavo.projeto.rpg.services;
 
-import com.gustavo.projeto.rpg.dto.SkillDto;
 import com.gustavo.projeto.rpg.exceptions.RecordNotFoundException;
-import com.gustavo.projeto.rpg.mappers.SkillMapper;
 import com.gustavo.projeto.rpg.models.Attribute;
 import com.gustavo.projeto.rpg.models.RpgCharacter;
 import com.gustavo.projeto.rpg.models.Skill;
@@ -23,22 +21,10 @@ public class SkillService {
 
     private final SkillRepository skillRepository;
 
-    private final CharacterRepository characterRepository;
-
-    private final AttributeRepository attributeRepository;
-
-    private final SkillMapper mapper;
-
     public SkillService(
-            SkillRepository skillRepository,
-            CharacterRepository characterRepository,
-            AttributeRepository attributeRepository,
-            SkillMapper mapper
+            SkillRepository skillRepository
     ){
         this.skillRepository = skillRepository;
-        this.characterRepository = characterRepository;
-        this.attributeRepository = attributeRepository;
-        this.mapper = mapper;
     }
 
     public List<Skill> list(){
@@ -50,31 +36,19 @@ public class SkillService {
                 .orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    public Skill create(@Valid @NotNull SkillDto skill){
-        RpgCharacter character = characterRepository.findById(skill.characterId())
-                .orElseThrow(() -> new RecordNotFoundException(skill.characterId()));
-        Attribute attribute = attributeRepository.findById(skill.attributeId())
-                .orElseThrow(() -> new RecordNotFoundException(skill.attributeId()));
-
-        Skill newSkill = mapper.toModel(skill);
-
-        newSkill.setRpgCharacter(character);
-        newSkill.setAttribute(attribute);
-
-        return skillRepository.save(newSkill);
+    public Skill create(@Valid @NotNull Skill skill){
+        return skillRepository.save(skill);
     }
 
-    public Skill update(@NotNull @Positive Long id, @Valid @NotNull SkillDto skill){
+    public Skill update(@NotNull @Positive Long id, @Valid @NotNull Skill skill){
         return skillRepository.findById(id).map(recordFound -> {
-            recordFound.setName(skill.name());
-            recordFound.setTotalValue(skill.totalValue());
-            recordFound.setBonus(skill.bonus());
-            recordFound.setTraining(skill.training());
-            recordFound.setTrainingValue(skill.trainingValue());
-            recordFound.setAttribute(attributeRepository.findById(skill.attributeId())
-                    .orElseThrow(() -> new RecordNotFoundException(skill.attributeId())));
-            recordFound.setTrainingRestriction(skill.trainingRestriction());
-            recordFound.setArmorPenalty(skill.armorPenalty());
+            recordFound.setName(skill.getName());
+            recordFound.setTotalValue(skill.getTotalValue());
+            recordFound.setBonus(skill.getBonus());
+            recordFound.setTraining(skill.getTraining());
+            recordFound.setTrainingValue(skill.getTrainingValue());
+            recordFound.setTrainingRestriction(skill.getTrainingRestriction());
+            recordFound.setArmorPenalty(skill.getArmorPenalty());
             return skillRepository.save(recordFound);
         }).orElseThrow(() -> new RecordNotFoundException(id));
     }
