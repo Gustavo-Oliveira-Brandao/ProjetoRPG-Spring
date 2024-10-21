@@ -4,4 +4,5 @@ Esse projeto é uma aplicação Spring que visa armazenar dados de um personagem
 
 
 <h2>Diagrama da modelagem de dados</h2>
+
 ![image](https://github.com/user-attachments/assets/34a7a2dc-6f35-41fd-9650-dfea26b06f11)
