@@ -3,14 +3,12 @@ package com.gustavo.projeto.rpg.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-import java.util.Objects;
+import java.util.List;
 
-@Data
 @Entity
+@Data
 public class Attack {
 
     @Id
@@ -53,53 +51,9 @@ public class Attack {
     @Column(length = 500)
     private String description;
 
-    @NotNull
-    @Column(nullable = false)
-    private Integer damageQuantity1;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer damageDiceSize1;
-
-    @NotNull
-    @Length(max = 50)
-    @Column(nullable = false, length = 50)
-    private String damageType1;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer bonusDamage1;
-
-    @NotNull
-    @Length(max = 50)
-    @Column(nullable = false, length = 50)
-    private String damageAttribute1;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer damageQuantity2;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer damageDiceSize2;
-
-    @NotNull
-    @Length(max = 50)
-    @Column(nullable = false, length = 50)
-    private String damageType2;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer bonusDamage2;
-
-    @NotNull
-    @Length(max = 50)
-    @Column(nullable = false, length = 50)
-    private String damageAttribute2;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rpg_character_id")
-    private RpgCharacter rpgCharacter;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "attack_id")
+    private List<Damage> damages;
 
     public Attack(){}
 

@@ -47,10 +47,6 @@ public class Skill {
     @Column(nullable = false)
     private Boolean armorPenalty;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "rpg_character_id")
-    private RpgCharacter rpgCharacter;
-
     public Skill() {
     }
 

@@ -2,6 +2,7 @@ package com.gustavo.projeto.rpg.services;
 
 import com.gustavo.projeto.rpg.exceptions.RecordNotFoundException;
 import com.gustavo.projeto.rpg.models.Attack;
+import com.gustavo.projeto.rpg.models.Damage;
 import com.gustavo.projeto.rpg.repositories.AttackRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -41,15 +42,7 @@ public class AttackService {
             recordFound.setCritMultiplier(attack.getCritMultiplier());
             recordFound.setCritMargin(attack.getCritMargin());
             recordFound.setDescription(attack.getDescription());
-            recordFound.setDamageQuantity1(attack.getDamageQuantity1());
-            recordFound.setDamageDiceSize1(attack.getDamageDiceSize1());
-            recordFound.setDamageType1(attack.getDamageType1());
-            recordFound.setBonusDamage1(attack.getBonusDamage1());
-            recordFound.setDamageQuantity2(attack.getDamageQuantity2());
-            recordFound.setDamageDiceSize2(attack.getDamageDiceSize2());
-            recordFound.setDamageType2(attack.getDamageType2());
-            recordFound.setBonusDamage2(attack.getBonusDamage2());
-            recordFound.setDamageAttribute2(attack.getDamageAttribute2());
+            recordFound.setDamages(attack.getDamages());
             return attackRepository.save(recordFound);
         }).orElseThrow(() -> new RecordNotFoundException(id));
     }

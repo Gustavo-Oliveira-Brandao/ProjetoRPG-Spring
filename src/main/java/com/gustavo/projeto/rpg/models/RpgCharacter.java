@@ -76,13 +76,16 @@ public class RpgCharacter {
     @Column(nullable = false)
     private Integer speed;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
     private List<Skill> skills;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
     private List<Attribute> attributes;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
     private List<Attack> attacks;
 
     public RpgCharacter(){}
