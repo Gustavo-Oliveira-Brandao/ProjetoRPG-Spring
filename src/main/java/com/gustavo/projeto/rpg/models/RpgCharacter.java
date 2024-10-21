@@ -78,15 +78,23 @@ public class RpgCharacter {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "rpg_character_id")
-    private List<Skill> skills;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
     private List<Attribute> attributes;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "rpg_character_id")
+    private List<Skill> skills;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
+    private List<Talent> talents;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
     private List<Attack> attacks;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
+    private List<Spell> spells;
 
     public RpgCharacter(){}
 

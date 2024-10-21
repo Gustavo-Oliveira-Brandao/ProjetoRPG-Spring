@@ -58,13 +58,10 @@ public class Spell{
     @Column(length = 100)
     private String area;
 
+    @NotNull
     @Length(max = 500)
-    @Column(length = 500)
+    @Column(nullable = false ,length = 500)
     private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rpg_character_id")
-    private RpgCharacter rpgCharacter;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "spell_id")
