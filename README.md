@@ -1,4 +1,4 @@
-**Projeto RPG - Spring**
+<h1>Projeto RPG - Spring</h1>
 
 Esse projeto é uma aplicação Spring que visa armazenar dados de um personagem de Tormenta20 em um banco de dados MySQL, com o intuito de contribuir para meus estudos focados em RestAPI e relacionamentos de banco de dados.
 
