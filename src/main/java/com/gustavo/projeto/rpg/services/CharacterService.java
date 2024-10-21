@@ -40,6 +40,21 @@ public class CharacterService {
             recordFound.setOrigin(rpgCharacter.getOrigin());
             recordFound.setDivinity(rpgCharacter.getDivinity());
             recordFound.setLevel(rpgCharacter.getLevel());
+            recordFound.setMaxHitPoints(rpgCharacter.getMaxHitPoints());
+            recordFound.setActualHitPoints(rpgCharacter.getActualHitPoints());
+            recordFound.setTemporaryHitPoints(rpgCharacter.getTemporaryHitPoints());
+            recordFound.setMaxManaPoints(rpgCharacter.getMaxManaPoints());
+            recordFound.setActualManaPoints(rpgCharacter.getActualManaPoints());
+            recordFound.setArmorClass(rpgCharacter.getArmorClass());
+            recordFound.setArmorPenaltyValue(rpgCharacter.getArmorPenaltyValue());
+            recordFound.setSpeed(rpgCharacter.getSpeed());
+            recordFound.setStory(rpgCharacter.getStory());
+            recordFound.setAttributes(rpgCharacter.getAttributes());
+            recordFound.setSkills(rpgCharacter.getSkills());
+            recordFound.setTalents(rpgCharacter.getTalents());
+            recordFound.setAttacks(rpgCharacter.getAttacks());
+            recordFound.setSpells(rpgCharacter.getSpells());
+            recordFound.setItems(rpgCharacter.getItems());
             return characterRepository.save(recordFound);
         }).orElseThrow(() -> new RecordNotFoundException(id));
     }
