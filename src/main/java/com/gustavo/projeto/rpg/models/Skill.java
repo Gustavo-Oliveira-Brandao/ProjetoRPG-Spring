@@ -47,6 +47,9 @@ public class Skill {
     @Column(nullable = false)
     private Boolean armorPenalty;
 
+    @NotNull
+    @Column(nullable = false)
+    private String attribute;
     public Skill() {
     }
 

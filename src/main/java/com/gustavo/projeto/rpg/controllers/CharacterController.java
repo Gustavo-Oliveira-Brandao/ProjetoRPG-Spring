@@ -22,26 +22,31 @@ public class CharacterController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<RpgCharacter> list(){
         return characterService.list();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public RpgCharacter findById(@PathVariable @NotNull @Positive Long id){
         return characterService.findById(id);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public RpgCharacter create(@RequestBody @Valid @NotNull RpgCharacter rpgCharacter){
         return characterService.create(rpgCharacter);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public RpgCharacter update(@PathVariable @NotNull @Positive Long id, @RequestBody @Valid @NotNull RpgCharacter rpgCharacter){
         return characterService.update(id, rpgCharacter);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public void delete(@PathVariable @NotNull @Positive Long id){
         characterService.delete(id);
     }

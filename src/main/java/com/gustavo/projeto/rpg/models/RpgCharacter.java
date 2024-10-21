@@ -74,7 +74,15 @@ public class RpgCharacter {
 
     @NotNull
     @Column(nullable = false)
+    private Integer armorPenaltyValue;
+
+    @NotNull
+    @Column(nullable = false)
     private Integer speed;
+
+    @Length(max = 2500)
+    @Column(length = 2500)
+    private String story;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "rpg_character_id")
@@ -95,6 +103,10 @@ public class RpgCharacter {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "rpg_character_id")
     private List<Spell> spells;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
+    private List<Item> items;
 
     public RpgCharacter(){}
 
