@@ -90,6 +90,10 @@ public class RpgCharacter {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "rpg_character_id")
+    private List<SavingThrow> savingThrows;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "rpg_character_id")
     private List<Skill> skills;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
