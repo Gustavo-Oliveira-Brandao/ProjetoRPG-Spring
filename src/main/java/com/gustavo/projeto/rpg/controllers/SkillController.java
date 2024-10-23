@@ -20,26 +20,31 @@ public class SkillController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Skill> list(){
         return skillService.list();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Skill findById(@PathVariable @NotNull @Positive Long id){
         return skillService.findById(id);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public Skill create(@RequestBody @NotNull @Valid Skill skill){
         return skillService.create(skill);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Skill update(@NotNull @PathVariable @Positive Long id, @RequestBody @Valid @NotNull Skill skill){
         return skillService.update(id, skill);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public void delete(@PathVariable @Positive @NotNull Long id){
         skillService.delete(id);
     }

@@ -20,26 +20,31 @@ public class TalentController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Talent> list(){
         return talentService.list();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Talent findById(@PathVariable @Positive @NotNull Long id){
         return talentService.findById(id);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public Talent create(@RequestBody @NotNull @Valid Talent talent){
         return talentService.create(talent);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Talent update(@PathVariable @Positive @NotNull Long id, @RequestBody @NotNull @Valid Talent talent){
         return talentService.update(id, talent);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public void delete(@PathVariable @NotNull @Positive Long id){
         talentService.delete(id);
     }

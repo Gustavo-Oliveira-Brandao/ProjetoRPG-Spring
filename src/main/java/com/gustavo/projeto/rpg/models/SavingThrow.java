@@ -11,7 +11,7 @@ public class SavingThrow {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @Column(name = "skill_id")
+    @Column(name = "saving_throw_id")
     private Long id;
 
     @NotNull

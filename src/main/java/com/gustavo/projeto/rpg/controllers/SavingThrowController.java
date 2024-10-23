@@ -20,26 +20,31 @@ public class SavingThrowController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<SavingThrow> list(){
         return savingThrowService.list();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public SavingThrow findById(@PathVariable @NotNull @Positive Long id){
         return savingThrowService.findById(id);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public SavingThrow create(@RequestBody @NotNull @Valid SavingThrow savingThrow){
         return savingThrowService.create(savingThrow);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public SavingThrow update(@PathVariable @NotNull @Positive Long id, @RequestBody @NotNull @Valid SavingThrow savingThrow){
         return savingThrowService.update(id, savingThrow);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public void delete(@PathVariable @NotNull @Positive Long id){
         savingThrowService.delete(id);
     }

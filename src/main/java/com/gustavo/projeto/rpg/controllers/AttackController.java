@@ -20,26 +20,31 @@ public class AttackController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Attack> list(){
         return attackService.list();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Attack findById(@PathVariable @NotNull @Positive Long id){
         return attackService.findById(id);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public Attack create(@RequestBody @Valid @NotNull Attack attack){
         return attackService.create(attack);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Attack update(@PathVariable @NotNull @Positive Long id, @RequestBody @NotNull @Valid Attack attack){
         return attackService.update(id, attack);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public void delete(@PathVariable @NotNull @Positive Long id){
         attackService.delete(id);
     }

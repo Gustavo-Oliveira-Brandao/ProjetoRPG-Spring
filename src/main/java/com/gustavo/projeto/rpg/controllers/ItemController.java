@@ -20,26 +20,31 @@ public class ItemController {
     }
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Item> list(){
         return itemService.list();
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Item findById(@PathVariable @NotNull @Positive Long id){
         return itemService.findById(id);
     }
 
     @PostMapping
+    @CrossOrigin(origins = "http://localhost:4200")
     public Item create(@RequestBody @NotNull @Valid Item item){
         return itemService.create(item);
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Item update(@PathVariable @NotNull @Positive Long id, @RequestBody @NotNull @Valid Item item){
         return itemService.update(id, item);
     }
 
     @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public void delete(@PathVariable @NotNull @Positive Long id){
         itemService.delete(id);
     }
