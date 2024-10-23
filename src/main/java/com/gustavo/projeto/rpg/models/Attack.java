@@ -1,5 +1,6 @@
 package com.gustavo.projeto.rpg.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -54,6 +55,11 @@ public class Attack {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "attack_id")
     private List<Damage> damages;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "rpg_character_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private RpgCharacter rpgCharacter;
 
     public Attack(){}
 

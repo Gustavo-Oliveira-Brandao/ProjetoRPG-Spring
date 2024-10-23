@@ -54,7 +54,7 @@ public class RpgCharacter {
 
     @NotNull
     @Column(nullable = false)
-    private Integer actualHitPoints;
+    private Integer currentHitPoints;
 
     @NotNull
     @Column(nullable = false)
@@ -66,7 +66,7 @@ public class RpgCharacter {
 
     @NotNull
     @Column(nullable = false)
-    private Integer actualManaPoints;
+    private Integer currentManaPoints;
 
     @NotNull
     @Column(nullable = false)
@@ -84,32 +84,25 @@ public class RpgCharacter {
     @Column(length = 2500)
     private String story;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Attribute> attributes;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<SavingThrow> savingThrows;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Skill> skills;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Talent> talents;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Attack> attacks;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Spell> spells;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "rpg_character_id")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Item> items;
 
     public RpgCharacter(){}

@@ -1,6 +1,7 @@
 package com.gustavo.projeto.rpg.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -27,6 +28,11 @@ public class Attribute {
     @NotNull
     @Column(nullable = false)
     private Integer totalValue;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "rpg_character_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private RpgCharacter rpgCharacter;
 
     public Attribute() {
     }

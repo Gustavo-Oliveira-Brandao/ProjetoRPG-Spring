@@ -47,6 +47,11 @@ public class SavingThrow {
     @NotNull
     @Column(nullable = false)
     private String attribute;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "rpg_character_id")
+    private RpgCharacter rpgCharacter;
+
     public SavingThrow() {
     }
 
