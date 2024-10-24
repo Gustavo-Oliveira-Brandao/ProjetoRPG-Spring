@@ -52,7 +52,11 @@ public class Skill {
     @Column(nullable = false)
     private String attribute;
 
-    @ManyToOne(optional = false)
+    @NotNull
+    @Column(nullable = false)
+    private boolean isSavingThrow;
+
+    @ManyToOne
     @JoinColumn(name = "rpg_character_id")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private RpgCharacter rpgCharacter;

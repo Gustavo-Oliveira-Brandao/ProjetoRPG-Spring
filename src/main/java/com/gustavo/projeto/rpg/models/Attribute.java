@@ -29,7 +29,7 @@ public class Attribute {
     @Column(nullable = false)
     private Integer totalValue;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "rpg_character_id")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private RpgCharacter rpgCharacter;

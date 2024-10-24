@@ -88,9 +88,6 @@ public class RpgCharacter {
     private List<Attribute> attributes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
-    private List<SavingThrow> savingThrows;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
     private List<Skill> skills;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "rpgCharacter", cascade = CascadeType.ALL)
