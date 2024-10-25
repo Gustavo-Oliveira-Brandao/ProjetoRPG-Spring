@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,22 +24,15 @@ public class Skill {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @NotNull
-    @Column(nullable = false)
-    private Integer totalValue;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer bonus;
+    @Column
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "skill_id")
+    private List<Modifier> modifiers;
 
     @NotNull
     @Length(max = 50)
     @Column(length = 50, nullable = false)
     private String training;
-
-    @NotNull
-    @Column(nullable = false)
-    private Integer trainingValue;
 
     @NotNull
     @Column(nullable = false)

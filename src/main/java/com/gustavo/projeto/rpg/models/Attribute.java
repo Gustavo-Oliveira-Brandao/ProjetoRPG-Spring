@@ -29,6 +29,10 @@ public class Attribute {
     @Column(nullable = false)
     private Integer totalValue;
 
+    @Column
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Modifier> modifiers;
+
     @ManyToOne
     @JoinColumn(name = "rpg_character_id")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

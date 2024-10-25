@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Damage {
@@ -29,12 +31,14 @@ public class Damage {
 
     @NotNull
     @Column(nullable = false)
-    private Integer bonusDamage;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "damage_id")
+    private List<Modifier> modifier;
 
     @NotNull
     @Length(max = 50)
     @Column(nullable = false, length = 50)
     private String damageAttribute;
 
-
+    public Damage(){}
 }

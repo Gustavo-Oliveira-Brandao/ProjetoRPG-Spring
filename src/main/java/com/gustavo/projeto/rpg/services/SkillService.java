@@ -34,10 +34,8 @@ public class SkillService {
     public Skill update(@NotNull @Positive Long id, @NotNull @Valid Skill skill){
         return skillRepository.findById(id).map(recordFound -> {
             recordFound.setName(skill.getName());
-            recordFound.setTotalValue(skill.getTotalValue());
-            recordFound.setBonus(skill.getBonus());
+            recordFound.setModifiers(skill.getModifiers());
             recordFound.setTraining(skill.getTraining());
-            recordFound.setTrainingValue(skill.getTrainingValue());
             recordFound.setTrainingRestriction(skill.getTrainingRestriction());
             recordFound.setArmorPenalty(skill.getArmorPenalty());
             recordFound.setAttribute(skill.getAttribute());
