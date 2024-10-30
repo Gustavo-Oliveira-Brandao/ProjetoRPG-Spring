@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Getter;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
@@ -27,16 +28,12 @@ public class Attribute {
 
     @NotNull
     @Column(nullable = false)
-    private Integer totalValue;
+    private Integer baseValue;
 
     @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "attribute_id")
     private List<Modifier> modifiers;
-
-    @ManyToOne
-    @JoinColumn(name = "rpg_character_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private RpgCharacter rpgCharacter;
 
     public Attribute() {
     }

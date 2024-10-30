@@ -24,6 +24,10 @@ public class Skill {
     @Column(length = 100, nullable = false)
     private String name;
 
+    @NotNull
+    @Column(nullable = false)
+    private Integer totalValue;
+
     @Column
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "skill_id")
@@ -36,24 +40,15 @@ public class Skill {
 
     @NotNull
     @Column(nullable = false)
-    private Boolean trainingRestriction;
-
-    @NotNull
-    @Column(nullable = false)
     private Boolean armorPenalty;
 
     @NotNull
     @Column(nullable = false)
-    private String attribute;
+    private Boolean isSavingThrow;
 
     @NotNull
     @Column(nullable = false)
-    private boolean isSavingThrow;
-
-    @ManyToOne
-    @JoinColumn(name = "rpg_character_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private RpgCharacter rpgCharacter;
+    private String attribute;
 
     public Skill() {
     }

@@ -39,10 +39,5 @@ public class Talent {
     @Column(length = 1000, nullable = false)
     private String description;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "rpg_character_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private RpgCharacter rpgCharacter;
-
     public Talent(){}
 }

@@ -33,7 +33,7 @@ public class Damage {
     @Column(nullable = false)
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "damage_id")
-    private List<Modifier> modifier;
+    private List<Modifier> modifiers;
 
     @NotNull
     @Length(max = 50)

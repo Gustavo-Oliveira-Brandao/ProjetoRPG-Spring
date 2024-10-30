@@ -27,12 +27,7 @@ public class Item {
     private Integer weight;
 
     @Column
-    private Integer value;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "rpg_character_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private RpgCharacter rpgCharacter;
+    private Integer currencyValue;
 
     public Item(){}
 

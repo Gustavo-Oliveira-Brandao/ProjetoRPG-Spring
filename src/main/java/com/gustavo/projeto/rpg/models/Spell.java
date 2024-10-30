@@ -30,7 +30,7 @@ public class Spell{
     @NotNull
     @Length(max = 50)
     @Column(length = 50, nullable = false)
-    private String listName;
+    private String spellListName;
 
     @NotNull
     @Length(max = 50)
@@ -71,11 +71,6 @@ public class Spell{
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "spell_id")
     private List<SpellUpgrade> spellUpgrades;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "rpg_character_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private RpgCharacter rpgCharacter;
 
     public Spell(){}
 
