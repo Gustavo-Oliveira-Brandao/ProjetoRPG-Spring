@@ -28,6 +28,10 @@ public class Attribute {
 
     @NotNull
     @Column(nullable = false)
+    private Integer totalValue;
+
+    @NotNull
+    @Column(nullable = false)
     private Integer baseValue;
 
     @Column
