@@ -20,6 +20,11 @@ public class Item {
     @Column(nullable = false, length = 100)
     private String name;
 
+    @NotNull
+    @Length(max = 50)
+    @Column(nullable = false, length = 50)
+    private String category;
+
     @Column
     private Integer quantity;
 
@@ -28,6 +33,10 @@ public class Item {
 
     @Column
     private Integer currencyValue;
+
+    @Length(max = 1000)
+    @Column(length = 1000)
+    private String description;
 
     public Item(){}
 

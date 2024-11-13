@@ -40,7 +40,7 @@ public class Spell{
     @NotNull
     @Length(max = 50)
     @Column(length = 50, nullable = false)
-    private String execution;
+    private String castingTime;
 
     @Length(max = 100)
     @Column(length = 100)
@@ -60,9 +60,13 @@ public class Spell{
     private String area;
 
     @NotNull
-    @Length(max = 500)
-    @Column(nullable = false ,length = 500)
+    @Length(max = 1500)
+    @Column(nullable = false ,length = 1500)
     private String description;
+
+    @NotNull
+    @Column(nullable = false)
+    private Integer level;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "spell_id")

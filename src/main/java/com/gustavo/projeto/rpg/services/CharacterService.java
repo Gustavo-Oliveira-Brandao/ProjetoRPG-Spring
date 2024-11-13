@@ -55,6 +55,7 @@ public class CharacterService {
             recordFound.setSkills(rpgCharacter.getSkills());
             recordFound.setTalents(rpgCharacter.getTalents());
             recordFound.setAttacks(rpgCharacter.getAttacks());
+            recordFound.setSpells(rpgCharacter.getSpells());
             recordFound.setItems(rpgCharacter.getItems());
             return characterRepository.save(recordFound);
         }).orElseThrow(() -> new RecordNotFoundException(id));

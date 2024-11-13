@@ -28,7 +28,7 @@ public class Talent {
     @NotNull
     @Length(max = 100)
     @Column(length = 100, nullable = false)
-    private String execution;
+    private String castingTime;
 
     @Length(max = 255)
     @Column
